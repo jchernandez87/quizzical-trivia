@@ -1,0 +1,67 @@
+.intro-container {
+  height: 90%;
+  width: 90%;
+  background-color: #f5f7fb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  background-image: url(../assets/circle2.png), url(../assets/circle1.png);
+  background-position: left bottom, right top;
+  background-size: 290px;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.intro-container > h1 {
+  font-family: "Karla", sans-serif;
+  color: #293264;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.intro-container > p {
+  margin: 0;
+  margin-bottom: 35px;
+  font-family: "Inter", sans-serif;
+  color: #293264;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.intro-btn {
+  border-radius: 10px;
+  background-color: #4d5b9e;
+  border: none;
+  cursor: pointer;
+  padding: 24px 75px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+@media only screen and (min-width: 800px) {
+  .intro-container > h1 {
+    font-size: 40px;
+  }
+
+  .intro-container > p {
+    font-size: 20px;
+  }
+
+  .intro-btn {
+    font-size: 20px;
+  }
+}
