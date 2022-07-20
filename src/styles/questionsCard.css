@@ -1,0 +1,47 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #d6dbf5;
+}
+
+.card-container > h3 {
+  font-family: "Karla", sans-serif;
+  color: #293264;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.answers-selection {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 15px;
+}
+
+.answers-selection > span {
+  border-radius: 12px;
+  background-color: transparent;
+  padding: 10px 0;
+  color: #293264;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: center;
+  border: 1px solid #293264;
+}
+
+@media only screen and (min-width: 800px) {
+  .card-container > h3 {
+    font-size: 24px;
+  }
+
+  .answers-selection > span {
+    font-size: 14px;
+  }
+}

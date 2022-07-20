@@ -1,11 +1,11 @@
 import "./App.css";
 import Main from "./components/main";
-import Intro from "./components/intro";
+// import Intro from "./components/intro";
 
 function App() {
   return (
     <div className="App">
-      <Intro />
+      {/* <Intro /> */}
       <Main />
     </div>
   );
