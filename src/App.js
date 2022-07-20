@@ -1,12 +1,16 @@
 import "./App.css";
+import { useState } from "react";
 import Main from "./components/main";
-// import Intro from "./components/intro";
+import Intro from "./components/intro";
 
 function App() {
+  const [play, setPlay] = useState(false);
+
+  const toggle = () => setPlay((prevState) => !prevState);
+
   return (
     <div className="App">
-      {/* <Intro /> */}
-      <Main />
+      {play ? <Main /> : <Intro toggle={() => toggle()} />}
     </div>
   );
 }
