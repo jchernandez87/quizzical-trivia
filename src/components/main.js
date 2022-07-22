@@ -6,53 +6,61 @@ import { nanoid } from "nanoid";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
-  const [showResult, setShowresult] = useState();
+  const [showResult, setShowResult] = useState()
   const [newGame, setNewGame] = useState();
 
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=4&difficulty=easy&type=multiple")
+    const url = "https://opentdb.com/api.php?amount=4&category=12&type=multiple";
+
+    setNewGame(false)
+    setShowResult(false)  
+
+    fetch(url)
       .then((res) => res.json())
-      .then((data) =>
-        setQuestions(
-          data.results.map((item) => {
-            const { incorrect_answers, correct_answer } = item;
+      .then((data) => {
+        const myItems = data.results.map((item) => {
+          const { incorrect_answers, correct_answer } = item;
 
-            const answersArr = [...incorrect_answers, correct_answer];
+          const answersArr = [...incorrect_answers, correct_answer];
 
-            const modifiedAnswersArr = answersArr.map((item) => {
-              const isCorrect = item === correct_answer ? true : false;
-
-              return {
-                id: nanoid(),
-                text: he.decode(item),
-                checked: false,
-                correct: isCorrect,
-              };
-            });
-
-            const shuffleArray = (array) => {
-              for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                const temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-              }
-              return array;
-            };
-
-            const randomArr = shuffleArray(modifiedAnswersArr);
+          const modifiedAnswersArr = answersArr.map((item) => {
+            const isCorrect = item === correct_answer ? true : false;
 
             return {
-              ...item,
               id: nanoid(),
-              current_answers: randomArr,
+              text: he.decode(item),
+              checked: false,
+              correct: isCorrect,
             };
-          })
-        )
-      );
-    setNewGame(false);
-    setShowresult(false);
+          });
+
+          const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              const temp = array[i];
+              array[i] = array[j];
+              array[j] = temp;
+            }
+            return array;
+          };
+
+          const randomArr = shuffleArray(modifiedAnswersArr);
+
+          return {
+            ...item,
+            id: nanoid(),
+            current_answers: randomArr,
+          };
+        });
+        setQuestions(myItems);
+      });
   }, [newGame]);
+
+  console.log(questions)
+
+  useEffect(() => {
+    setShowResult(false)
+  }, [newGame])
 
   const toggle = (event, id, parentId) => {
     event.stopPropagation();
@@ -108,12 +116,12 @@ const Main = () => {
   };
 
   const checkAnswers = () => {
-    setShowresult(true);
+    setShowResult(true)
   };
 
   const anotherRound = () => {
-    setNewGame(true);
-  };
+    setNewGame(true)
+  }
 
   return (
     <div className="main-container">
@@ -126,9 +134,7 @@ const Main = () => {
       {showResult && (
         <div className="result">
           <p className="score">{`You scored ${result()}/4 correct answers`}</p>
-          <button onClick={anotherRound} className="check-btn">
-            "New Game
-          </button>
+          <button onClick={anotherRound} className="check-btn">"New Game</button>
         </div>
       )}
     </div>
