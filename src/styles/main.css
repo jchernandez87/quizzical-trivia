@@ -15,7 +15,25 @@
 }
 
 .card-grid {
-  width: 80%;
+  width: 90%;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #293264;
+  margin-right: 18px;
+  display: block;
 }
 
 .check-btn {
@@ -36,6 +54,10 @@
 @media only screen and (min-width: 800px) {
   .card-grid {
     width: 60%;
+  }
+
+  .score  {
+    font-size: 22px;
   }
 }
 

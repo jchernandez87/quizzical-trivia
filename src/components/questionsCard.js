@@ -1,30 +1,31 @@
-import { useState } from "react";
-import he from "he";
 import "../styles/questionsCard.css";
-import Answer from "./answer";
 
 const QuestionCard = (props) => {
-
-
-  // const randomArr = shuffleArray(answers);
-
-  // const toggle = (event, id) => {
-  //   event.stopPropagation();
-  //   setAnswers(prevAnswers =>
-  //     prevAnswers.map((item) =>
-  //       item.id === id ? { ...item, checked: !item.checked } : { ...item, checked: false}
-  //     )
-  //   );
-  // };
-
-  const answersList = props.answers.map((item) => (
-    <Answer
-      // toggle={(event) => toggle(event, item.id)}
-      key={item.id}
-      text={he.decode(item.text)}
-      checked={item.checked}
-    />
-  ));
+  const answersList = props.answers.map((item) => {
+    const backColor = () => {
+      if(item.checked) {
+        return "green"
+      } else if (props.showCorrect && item.checked) {
+        return "green"
+      } else if (props.showCorrect && item.correct) {
+        return "red"
+      } else {
+        return " transparent"
+      }
+    }
+    
+    return (
+      <span
+        onClick={(event) => props.toggle(event, item.id, props.parentId)}
+        className={backColor()}
+        key={item.id}
+        text={item.text}
+        checked={item.checked}
+      >
+        {item.text}
+      </span>
+    );
+  });
 
   return (
     <div className="card-container">
