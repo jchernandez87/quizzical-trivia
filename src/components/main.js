@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import he from "he";
 import "../styles/main.css";
 import QuestionsCard from "./questionsCard";
+import { nanoid } from "nanoid";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
@@ -17,12 +18,17 @@ const Main = () => {
 
     const localArr = () => [...incorrect_answers, correct_answer];
 
+    const test = localArr().map(item => ({
+      id: nanoid(),
+      text: item,
+      checked: false
+    }))
+
     return (
       <QuestionsCard
         key={questions.indexOf(item)}
         question={he.decode(item.question)}
-        correctAnswer={item.correct_answer}
-        answers={localArr()}
+        answers={test}
       />
     );
   });
@@ -30,7 +36,7 @@ const Main = () => {
   return (
     <div className="main-container">
       <div className="card-grid">{cards}</div>
-      <button className="check-btn"> Check answers</button>
+      <button className="check-btn">Check answers</button>
     </div>
   );
 };

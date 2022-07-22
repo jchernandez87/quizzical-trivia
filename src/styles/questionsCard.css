@@ -24,7 +24,6 @@
 
 .answers-selection > span {
   border-radius: 12px;
-  background-color: transparent;
   padding: 10px 0;
   color: #293264;
   font-family: "Inter", sans-serif;
@@ -44,5 +43,6 @@
   .answers-selection > span {
     cursor: pointer;
     font-size: 14px;
+    line-height: 20px;
   }
 }

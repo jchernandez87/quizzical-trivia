@@ -1,28 +1,47 @@
+import { useState } from "react";
+import he from "he";
 import "../styles/questionsCard.css";
-import { nanoid } from 'nanoid'
+import Answer from "./answer";
 
 const QuestionCard = (props) => {
-  
-  const shuffleArray = array => {
+  const [answers, setAnswers] = useState(props.answers);
+
+  const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = array[i];
       array[i] = array[j];
       array[j] = temp;
     }
-    return array
-  }
+    return array;
+  };
 
-  const randomArr = shuffleArray(props.answers);
+  // const randomArr = shuffleArray(answers);
 
-  const testing = randomArr.map(item => <span key={nanoid()}>{item}</span>)
+  const toggle = (event, id) => {
+    event.stopPropagation();
+    setAnswers(prevAnswers =>
+      prevAnswers.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
+  console.log(answers)
+
+  const answersList = answers.map((item) => (
+    <Answer
+      toggle={(event) => toggle(event, item.id)}
+      key={item.id}
+      text={he.decode(item.text)}
+      checked={item.checked}
+    />
+  ));
 
   return (
     <div className="card-container">
       <h3>{props.question}</h3>
-      <div className="answers-selection">
-      {testing}
-      </div>
+      <div className="answers-selection">{answersList}</div>
     </div>
   );
 };
