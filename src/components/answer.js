@@ -1,7 +1,10 @@
-import '../styles/answer.css';
+import "../styles/answer.css";
 
 const answer = (props) => (
-  <span className={props.checked ? "green" : "transparent"} onClick={props.toggle}>
+  <span
+    className={props.checked ? "green" : "transparent"}
+    onClick={props.toggle}
+  >
     {props.text}
   </span>
 );
