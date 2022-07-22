@@ -6,15 +6,12 @@ import { nanoid } from "nanoid";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
-  const [showResult, setShowResult] = useState()
+  const [showResult, setShowResult] = useState();
   const [newGame, setNewGame] = useState();
 
   useEffect(() => {
-    const url = "https://opentdb.com/api.php?amount=4&category=12&type=multiple";
-
-    setNewGame(false)
-    setShowResult(false)  
-
+    const url =
+      "https://opentdb.com/api.php?amount=4&category=12&type=multiple";
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -55,12 +52,6 @@ const Main = () => {
         setQuestions(myItems);
       });
   }, [newGame]);
-
-  console.log(questions)
-
-  useEffect(() => {
-    setShowResult(false)
-  }, [newGame])
 
   const toggle = (event, id, parentId) => {
     event.stopPropagation();
@@ -116,12 +107,13 @@ const Main = () => {
   };
 
   const checkAnswers = () => {
-    setShowResult(true)
+    setShowResult(true);
   };
 
   const anotherRound = () => {
-    setNewGame(true)
-  }
+    setNewGame((prevGame) => !prevGame);
+    setShowResult(false);
+  };
 
   return (
     <div className="main-container">
@@ -134,7 +126,9 @@ const Main = () => {
       {showResult && (
         <div className="result">
           <p className="score">{`You scored ${result()}/4 correct answers`}</p>
-          <button onClick={anotherRound} className="check-btn">"New Game</button>
+          <button onClick={anotherRound} className="check-btn">
+            "New Game
+          </button>
         </div>
       )}
     </div>
