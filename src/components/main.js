@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import he from "he";
+import Confetti from "react-confetti";
 import "../styles/main.css";
 import QuestionsCard from "./questionsCard";
 import { nanoid } from "nanoid";
@@ -47,6 +48,7 @@ const Main = () => {
             ...item,
             id: nanoid(),
             current_answers: randomArr,
+            correct_answer: he.decode(item.correct_answer),
           };
         });
         setQuestions(myItems);
@@ -55,22 +57,24 @@ const Main = () => {
 
   const toggle = (event, id, parentId) => {
     event.stopPropagation();
-    setQuestions((prevQuestions) =>
-      prevQuestions.map((parent) => {
-        const newAnswers = parent.current_answers.map((answer) =>
-          answer.id === id
-            ? { ...answer, checked: !answer.checked }
-            : { ...answer, checked: false }
-        );
+    if (!showResult) {
+      setQuestions((prevQuestions) =>
+        prevQuestions.map((parent) => {
+          const newAnswers = parent.current_answers.map((answer) =>
+            answer.id === id
+              ? { ...answer, checked: !answer.checked }
+              : { ...answer, checked: false }
+          );
 
-        return parent.id === parentId
-          ? {
-              ...parent,
-              current_answers: newAnswers,
-            }
-          : parent;
-      })
-    );
+          return parent.id === parentId
+            ? {
+                ...parent,
+                current_answers: newAnswers,
+              }
+            : parent;
+        })
+      );
+    }
   };
 
   const cards = questions.map((item) => {
@@ -117,6 +121,9 @@ const Main = () => {
 
   return (
     <div className="main-container">
+      {showResult && result() === 4 && (
+        <Confetti width={window.innerWidth} height={window.innerHeight} />
+      )}
       <div className="card-grid">{cards}</div>
       {!showResult && (
         <button onClick={checkAnswers} className="check-btn">

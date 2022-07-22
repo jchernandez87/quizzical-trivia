@@ -3,17 +3,17 @@ import "../styles/questionsCard.css";
 const QuestionCard = (props) => {
   const answersList = props.answers.map((item) => {
     const backColor = () => {
-      if(item.checked) {
-        return "green"
+      if (item.checked) {
+        return "green";
       } else if (props.showCorrect && item.checked) {
-        return "green"
+        return "green";
       } else if (props.showCorrect && item.correct) {
-        return "red"
+        return "red";
       } else {
-        return " transparent"
+        return " transparent";
       }
-    }
-    
+    };
+
     return (
       <span
         onClick={(event) => props.toggle(event, item.id, props.parentId)}
