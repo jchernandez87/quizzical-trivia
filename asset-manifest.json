@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/quizzical-trivia/static/css/main.13ee3b69.css",
-    "main.js": "/quizzical-trivia/static/js/main.7f07d0c5.js",
+    "main.css": "/quizzical-trivia/static/css/main.93a51192.css",
+    "main.js": "/quizzical-trivia/static/js/main.2e0d9c7f.js",
     "index.html": "/quizzical-trivia/index.html",
-    "main.13ee3b69.css.map": "/quizzical-trivia/static/css/main.13ee3b69.css.map",
-    "main.7f07d0c5.js.map": "/quizzical-trivia/static/js/main.7f07d0c5.js.map"
+    "main.93a51192.css.map": "/quizzical-trivia/static/css/main.93a51192.css.map",
+    "main.2e0d9c7f.js.map": "/quizzical-trivia/static/js/main.2e0d9c7f.js.map"
   },
   "entrypoints": [
-    "static/css/main.13ee3b69.css",
-    "static/js/main.7f07d0c5.js"
+    "static/css/main.93a51192.css",
+    "static/js/main.2e0d9c7f.js"
   ]
 }
