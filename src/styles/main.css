@@ -1,6 +1,7 @@
 .main-container {
-  height: 95%;
   width: 95%;
+  padding: 15px 0;
+  margin: 20px 0;
   background-color: #f5f7fb;
   display: flex;
   flex-direction: column;
@@ -15,17 +16,18 @@
 }
 
 .card-grid {
-  width: 90%;
+  width: 95%;
 }
 
 .result {
+  margin-bottom: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .score {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 13px;
   font-weight: 700;
   line-height: 15px;
@@ -41,7 +43,7 @@
   background-color: #4d5b9e;
   border: none;
   cursor: pointer;
-  padding: 20px 55px;
+  padding: 10px 14px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -56,7 +58,11 @@
     width: 60%;
   }
 
-  .score  {
+  .check-btn {
+    padding: 20px 55px;
+  }
+
+  .score {
     font-size: 22px;
   }
 }

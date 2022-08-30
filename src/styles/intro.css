@@ -1,6 +1,6 @@
 .intro-container {
-  height: 90%;
-  width: 90%;
+  height: 98%;
+  width: 95%;
   background-color: #f5f7fb;
   display: flex;
   flex-direction: column;
@@ -53,6 +53,11 @@
 }
 
 @media only screen and (min-width: 800px) {
+  .intro-container {
+    height: 90%;
+    width: 90%;
+  }
+
   .intro-container > h1 {
     font-size: 40px;
   }

@@ -134,7 +134,7 @@ const Main = () => {
         <div className="result">
           <p className="score">{`You scored ${result()}/4 correct answers`}</p>
           <button onClick={anotherRound} className="check-btn">
-            "New Game
+            New Game
           </button>
         </div>
       )}
